@@ -3,9 +3,9 @@
 
 int main()
 {
-    const int screenWidth = 800;
-    const int screenHeight = 450;
-    const int cellSize = 50;
+    const int screenWidth = 700;
+    const int screenHeight = 600;
+    const int cellSize = 80;
 
     InitWindow(screenWidth, screenHeight, "Parking");
     SetTargetFPS(60);
