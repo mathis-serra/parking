@@ -1,24 +1,23 @@
-#include<vector>
-using namespace std;
+#ifndef GRID_HPP
+#define GRID_HPP
 
+#include<vector>
+#include "raylib.h"
 
 class Grid
 {
-    public:
-        Grid(int width, int height , int cellSize)
-        : rows(height / cellSize), columns(width / cellSize), cellSize(cellSize), cells(rows, vector<int>(columns, 0)) {};
-        void Draw();
-        
-        int GetRows(){return rows;}
-        int GetColumns(){return columns;}
-        
-        
-    private:
-        int rows;
-        int columns;
-        int cellSize;
-        vector<vector<int>> cells; 
+public:
+    Grid(int width, int height, int cellSize);
+    void Draw();
 
+    int GetRows() const { return rows; }
+    int GetColumns() const { return columns; }
 
-
+private:
+    int rows;
+    int columns;
+    int cellSize;
+    std::vector<std::vector<int>> cells;
 };
+
+#endif // GRID_HPP
