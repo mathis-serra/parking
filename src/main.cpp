@@ -7,6 +7,11 @@ int main()
     const int screenHeight = 600;
     const int cellSize = 80;
     bool displayGrid = false;
+    bool gameover = false;
+    bool win = false;
+    bool game1 = false;
+    bool game2 = false;
+    bool game3 = false;
 
     InitWindow(screenWidth, screenHeight, "Parking");
     SetTargetFPS(60);
@@ -26,6 +31,7 @@ int main()
         if (displayGrid)
         {
             grid.Draw();
+            //grid.drawCar5();
         }
         else
         {

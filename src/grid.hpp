@@ -20,4 +20,4 @@ private:
     std::vector<std::vector<int>> cells;
 };
 
-#endif // GRID_HPP
+#endif
