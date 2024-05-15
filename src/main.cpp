@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "grid.hpp"
+#include "vehicule.hpp"
 
 int main()
 {
@@ -7,16 +7,11 @@ int main()
     const int screenHeight = 600;
     const int cellSize = 80;
     bool displayGrid = false;
-    bool gameover = false;
-    bool win = false;
-    bool game1 = false;
-    bool game2 = false;
-    bool game3 = false;
 
     InitWindow(screenWidth, screenHeight, "Parking");
     SetTargetFPS(60);
 
-    Grid grid(screenWidth, screenHeight, cellSize);
+    Vehicule parking(screenWidth, screenHeight, cellSize);
 
     while (!WindowShouldClose())
     {
@@ -24,14 +19,33 @@ int main()
         {
             displayGrid = !displayGrid;
         }
-        
+
+        if (displayGrid)
+        {
+            if (IsKeyDown(KEY_LEFT))
+            {
+                parking.shift_car('g'); // Déplacer la voiture principale vers la gauche
+            }
+            else if (IsKeyDown(KEY_RIGHT))
+            {
+                parking.shift_car('d'); // Déplacer la voiture principale vers la droite
+            }
+            else if (IsKeyDown(KEY_UP))
+            {
+                parking.shift_car('h'); // Déplacer la voiture principale vers le haut
+            }
+            else if (IsKeyDown(KEY_DOWN))
+            {
+                parking.shift_car('b'); // Déplacer la voiture principale vers le bas
+            }
+        }
+
         BeginDrawing();
         ClearBackground(WHITE);
 
         if (displayGrid)
         {
-            grid.Draw();
-            //grid.drawCar5();
+            parking.Draw();
         }
         else
         {

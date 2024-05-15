@@ -10,9 +10,6 @@ public:
     Grid(int width, int height, int cellSize);
     void Draw();
 
-    int GetRows() const { return rows; }
-    int GetColumns() const { return columns; }
-
 private:
     int rows;
     int columns;

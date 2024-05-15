@@ -1,15 +1,15 @@
-#ifndef VEHICLE_HPP
-#define VEHICLE_HPP
+#ifndef VEHICULE_HPP
+#define VEHICULE_HPP
 
 #include<vector>
 #include "raylib.h"
 
-class Vehicle
+class Vehicule
 {
 public:
-    Vehicle(int width, int height, int cellSize);
+    Vehicule(int width, int height, int cellSize);
     void Draw();
-    void shift_car();
+    void shift_car(int direction);
 
 
 private:
