@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "vehicule.hpp"
 #include "grid.hpp"
+#include <cstdio> 
 
 int main()
 {
@@ -24,21 +25,28 @@ int main()
 
         if (displayGrid)
         {
+            
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            {
+                Vector2 mousePosition = GetMousePosition();
+                vehicule.select_car(mousePosition.x - grid.GetOffsetX(), mousePosition.y - grid.GetOffsetY());
+            }
+
             if (IsKeyDown(KEY_LEFT))
             {
-                vehicule.shift_car('g'); // Déplacer la voiture principale vers la gauche
+                vehicule.shift_car('g'); 
             }
             else if (IsKeyDown(KEY_RIGHT))
             {
-                vehicule.shift_car('d'); // Déplacer la voiture principale vers la droite
+                vehicule.shift_car('d'); 
             }
             else if (IsKeyDown(KEY_UP))
             {
-                vehicule.shift_car('h'); // Déplacer la voiture principale vers le haut
+                vehicule.shift_car('h');
             }
             else if (IsKeyDown(KEY_DOWN))
             {
-                vehicule.shift_car('b'); // Déplacer la voiture principale vers le bas
+                vehicule.shift_car('b'); 
             }
         }
 
