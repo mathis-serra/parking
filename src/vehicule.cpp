@@ -16,14 +16,7 @@ void Vehicule::InitializeVehicles() {
     cells[1][2] = 1;
 }
 
-void Vehicule::Draw() {
-    // Dessiner la grille
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < columns; ++j) {
-            DrawRectangle(j * cellSize, i * cellSize, cellSize, cellSize, LIGHTGRAY);
-            DrawRectangleLines(j * cellSize, i * cellSize, cellSize, cellSize, DARKGRAY);
-        }
-    }
+void Vehicule::Draw() { 
 
     // Dessiner les véhicules
     for (int i = 0; i < rows; ++i) {

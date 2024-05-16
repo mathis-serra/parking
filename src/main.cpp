@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "vehicule.hpp"
+#include "grid.hpp"
 
 int main()
 {
@@ -11,7 +12,8 @@ int main()
     InitWindow(screenWidth, screenHeight, "Parking");
     SetTargetFPS(60);
 
-    Vehicule parking(screenWidth, screenHeight, cellSize);
+    Vehicule vehicule(screenWidth, screenHeight, cellSize);
+    Grid grid(screenWidth, screenHeight, cellSize);
 
     while (!WindowShouldClose())
     {
@@ -24,19 +26,19 @@ int main()
         {
             if (IsKeyDown(KEY_LEFT))
             {
-                parking.shift_car('g'); // Déplacer la voiture principale vers la gauche
+                vehicule.shift_car('g'); // Déplacer la voiture principale vers la gauche
             }
             else if (IsKeyDown(KEY_RIGHT))
             {
-                parking.shift_car('d'); // Déplacer la voiture principale vers la droite
+                vehicule.shift_car('d'); // Déplacer la voiture principale vers la droite
             }
             else if (IsKeyDown(KEY_UP))
             {
-                parking.shift_car('h'); // Déplacer la voiture principale vers le haut
+                vehicule.shift_car('h'); // Déplacer la voiture principale vers le haut
             }
             else if (IsKeyDown(KEY_DOWN))
             {
-                parking.shift_car('b'); // Déplacer la voiture principale vers le bas
+                vehicule.shift_car('b'); // Déplacer la voiture principale vers le bas
             }
         }
 
@@ -45,7 +47,8 @@ int main()
 
         if (displayGrid)
         {
-            parking.Draw();
+            grid.Draw();
+            vehicule.Draw();
         }
         else
         {
