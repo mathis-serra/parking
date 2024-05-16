@@ -2,13 +2,13 @@
 #define VEHICULE_HPP
 
 #include <vector>
-#include "raylib.h"
 
-class Vehicule
-{
+class Grid;
+
+class Vehicule {
 public:
     Vehicule(int width, int height, int cellSize);
-    void Draw();
+    void Draw(const Grid& grid) const;
     void shift_car(int direction);
 
 private:
@@ -17,7 +17,7 @@ private:
     int cellSize;
     std::vector<std::vector<int>> cells;
 
-    void InitializeVehicles(); // Déclaration de la fonction InitializeVehicles
+    void InitializeVehicles();
 };
 
-#endif
+#endif 

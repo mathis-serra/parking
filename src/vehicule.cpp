@@ -1,37 +1,37 @@
 #include "vehicule.hpp"
+#include "grid.hpp"
 
 Vehicule::Vehicule(int width, int height, int cellSize)
     : rows(height / cellSize), columns(width / cellSize), cellSize(cellSize), cells(rows, std::vector<int>(columns, 0)) {
-    // Initialiser les véhicules
     InitializeVehicles();
 }
 
 void Vehicule::InitializeVehicles() {
-    
     cells[0][0] = 2; 
     cells[0][1] = 2;
-
-    
     cells[1][1] = 1; 
     cells[1][2] = 1;
+    cells[2][2] = 1;
+    cells[2][3] = 1;
 }
 
-void Vehicule::Draw() { 
+void Vehicule::Draw(const Grid& grid) const {
+    int offsetX = grid.GetOffsetX();
+    int offsetY = grid.GetOffsetY();
 
     // Dessiner les véhicules
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < columns; ++j) {
             if (cells[i][j] == 1) { // Autre véhicule (carré bleu)
-                DrawRectangle(j * cellSize, i * cellSize, cellSize, cellSize, BLUE);
+                DrawRectangle(offsetX + j * cellSize, offsetY + i * cellSize, cellSize, cellSize, BLUE);
             } else if (cells[i][j] == 2) { // Véhicule principal (deux carrés jaunes)
-                DrawRectangle(j * cellSize, i * cellSize, cellSize, cellSize, YELLOW);
+                DrawRectangle(offsetX + j * cellSize, offsetY + i * cellSize, cellSize, cellSize, YELLOW);
             }
         }
     }
 }
 
 void Vehicule::shift_car(int direction) {
-    // Code pour déplacer la voiture principale
     int row = -1, column = -1; // Initialiser avec des valeurs par défaut
 
     // Trouver la position de la voiture principale

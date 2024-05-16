@@ -12,8 +12,8 @@ int main()
     InitWindow(screenWidth, screenHeight, "Parking");
     SetTargetFPS(60);
 
-    Vehicule vehicule(screenWidth, screenHeight, cellSize);
     Grid grid(screenWidth, screenHeight, cellSize);
+    Vehicule vehicule(screenWidth, screenHeight, cellSize);
 
     while (!WindowShouldClose())
     {
@@ -48,7 +48,7 @@ int main()
         if (displayGrid)
         {
             grid.Draw();
-            vehicule.Draw();
+            vehicule.Draw(grid); 
         }
         else
         {
