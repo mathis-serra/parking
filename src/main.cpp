@@ -25,7 +25,6 @@ int main()
 
         if (displayGrid)
         {
-            
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             {
                 Vector2 mousePosition = GetMousePosition();
@@ -73,3 +72,4 @@ int main()
 
     return 0;
 }
+
