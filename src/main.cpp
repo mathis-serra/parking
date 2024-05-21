@@ -11,7 +11,7 @@ int main()
     bool displayGrid = false;
 
     InitWindow(screenWidth, screenHeight, "Parking");
-    SetTargetFPS(12);
+    SetTargetFPS(10);
 
     Grid grid(screenWidth, screenHeight, cellSize);
     Vehicule vehicule(screenWidth, screenHeight, cellSize);
