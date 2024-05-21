@@ -31,4 +31,4 @@ private:
     bool isHorizontal;
 };
 
-#endif // VEHICULE_HPP
+#endif

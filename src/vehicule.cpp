@@ -45,7 +45,6 @@ bool Vehicule::hasNeighbourOfSameColor(int row, int column) const {
     }
     return false;
 }
-
 void Vehicule::shift_car(int direction) {
     if (selectedRow == -1 || selectedColumn == -1) return;
 
@@ -83,20 +82,24 @@ void Vehicule::shift_car(int direction) {
     }
 
     if (canMove) {
-        cells[selectedRow][selectedColumn] = 0;
-        if (isHorizontal) {
-            cells[selectedRow][selectedColumn + 1] = 0;
-            cells[nextRow][nextColumn] = carType;
-            cells[nextRow][nextColumn + 1] = carType;
-        } else {
-            cells[selectedRow + 1][selectedColumn] = 0;
-            cells[nextRow][nextColumn] = carType;
-            cells[nextRow + 1][nextColumn] = carType;
+        // Check if the next position is within the grid bounds
+        if (nextRow >= 0 && nextRow < rows && nextColumn >= 0 && nextColumn < columns) {
+            cells[selectedRow][selectedColumn] = 0;
+            if (isHorizontal) {
+                cells[selectedRow][selectedColumn + 1] = 0;
+                cells[nextRow][nextColumn] = carType;
+                cells[nextRow][nextColumn + 1] = carType;
+            } else {
+                cells[selectedRow + 1][selectedColumn] = 0;
+                cells[nextRow][nextColumn] = carType;
+                cells[nextRow + 1][nextColumn] = carType;
+            }
+            selectedRow = nextRow;
+            selectedColumn = nextColumn;
         }
-        selectedRow = nextRow;
-        selectedColumn = nextColumn;
     }
 }
+
 
 void Vehicule::select_car(int x, int y) {
     int row = y / cellSize;
