@@ -81,21 +81,50 @@ void Vehicule::shift_car(int direction) {
             break;
     }
 
-    if (canMove) {
-        cells[selectedRow][selectedColumn] = 0;
-        if (isHorizontal) {
-            cells[selectedRow][selectedColumn + 1] = 0;
-            cells[nextRow][nextColumn] = carType;
-            cells[nextRow][nextColumn + 1] = carType;
-        } else {
-            cells[selectedRow + 1][selectedColumn] = 0;
-            cells[nextRow][nextColumn] = carType;
-            cells[nextRow + 1][nextColumn] = carType;
+    // Check if the next position is within the grid boundaries
+    if (nextRow >= 0 && nextRow < rows && nextColumn >= 0 && nextColumn < columns) {
+        // Check if the neighboring cell in the direction we want to move is of the same color
+        switch (direction) {
+            case 'g': // Left
+                if (isHorizontal && selectedColumn > 0 && cells[selectedRow][selectedColumn - 1] == carType) {
+                    canMove = true;
+                }
+                break;
+            case 'd': // Right
+                if (isHorizontal && selectedColumn < columns - 2 && cells[selectedRow][selectedColumn + 2] == carType) {
+                    canMove = true;
+                }
+                break;
+            case 'h': // Up
+                if (!isHorizontal && selectedRow > 0 && cells[selectedRow - 1][selectedColumn] == carType) {
+                    canMove = true;
+                }
+                break;
+            case 'b': // Down
+                if (!isHorizontal && selectedRow < rows - 2 && cells[selectedRow + 2][selectedColumn] == carType) {
+                    canMove = true;
+                }
+                break;
         }
-        selectedRow = nextRow;
-        selectedColumn = nextColumn;
+
+        if (canMove) {
+            cells[selectedRow][selectedColumn] = 0;
+            if (isHorizontal) {
+                cells[selectedRow][selectedColumn + 1] = 0;
+                cells[nextRow][nextColumn] = carType;
+                cells[nextRow][nextColumn + 1] = carType;
+            } else {
+                cells[selectedRow + 1][selectedColumn] = 0;
+                cells[nextRow][nextColumn] = carType;
+                cells[nextRow + 1][nextColumn] = carType;
+            }
+            selectedRow = nextRow;
+            selectedColumn = nextColumn;
+        }
     }
 }
+
+
 
 void Vehicule::select_car(int x, int y) {
     int row = y / cellSize;
