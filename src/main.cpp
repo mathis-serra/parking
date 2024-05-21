@@ -1,5 +1,7 @@
 #include "raylib.h"
+#include "vehicule.hpp"
 #include "grid.hpp"
+#include <cstdio> 
 
 int main()
 {
@@ -9,9 +11,10 @@ int main()
     bool displayGrid = false;
 
     InitWindow(screenWidth, screenHeight, "Parking");
-    SetTargetFPS(60);
+    SetTargetFPS(12);
 
     Grid grid(screenWidth, screenHeight, cellSize);
+    Vehicule vehicule(screenWidth, screenHeight, cellSize);
 
     while (!WindowShouldClose())
     {
@@ -19,13 +22,40 @@ int main()
         {
             displayGrid = !displayGrid;
         }
-        
+
+        if (displayGrid)
+        {
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            {
+                Vector2 mousePosition = GetMousePosition();
+                vehicule.select_car(mousePosition.x - grid.GetOffsetX(), mousePosition.y - grid.GetOffsetY());
+            }
+
+            if (IsKeyDown(KEY_LEFT))
+            {
+                vehicule.shift_car('g'); 
+            }
+            else if (IsKeyDown(KEY_RIGHT))
+            {
+                vehicule.shift_car('d'); 
+            }
+            else if (IsKeyDown(KEY_UP))
+            {
+                vehicule.shift_car('h');
+            }
+            else if (IsKeyDown(KEY_DOWN))
+            {
+                vehicule.shift_car('b'); 
+            }
+        }
+
         BeginDrawing();
         ClearBackground(WHITE);
 
         if (displayGrid)
         {
             grid.Draw();
+            vehicule.Draw(grid); 
         }
         else
         {
