@@ -21,6 +21,8 @@ void Grid::Draw() const {
         DrawText(TextFormat("%d", column + 1), offsetX + column * cellSize + cellSize / 2 - 5, offsetY - 30, 20, BLACK);
     }
 
+    
+
     // Draw the grid
     for (int row = 0; row < gridSize; row++) {
         for (int column = 0; column < gridSize; column++) {
@@ -28,6 +30,10 @@ void Grid::Draw() const {
             DrawRectangle(offsetX + column * cellSize, offsetY + row * cellSize, cellSize - 1, cellSize - 1, color);
         }
     }
+}
+
+bool Grid::IsWithinBounds(int row, int column) const {
+    return (row >= 0 && row < rows && column >= 0 && column < columns);
 }
 
 int Grid::GetOffsetX() const {

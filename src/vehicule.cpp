@@ -1,5 +1,4 @@
 #include "vehicule.hpp"
-#include "grid.hpp"
 
 Vehicule::Vehicule(int width, int height, int cellSize)
     : rows(height / cellSize), columns(width / cellSize), cellSize(cellSize), cells(rows, std::vector<int>(columns, 0)), selectedRow(-1), selectedColumn(-1), isHorizontal(true) {
@@ -13,8 +12,8 @@ void Vehicule::InitializeVehicles() {
     cells[1][1] = 1;
     cells[1][2] = 1;
 
+    cells[0][4] = 1;
     cells[1][4] = 1;
-    cells[2][4] = 1;
 }
 
 void Vehicule::Draw(const Grid& grid) const {

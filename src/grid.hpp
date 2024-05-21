@@ -10,6 +10,7 @@ public:
     void Draw() const;
     int GetOffsetX() const;
     int GetOffsetY() const;
+    bool IsWithinBounds(int row, int column) const; // New method to check if row and column are within grid bounds
 
 private:
     int rows;
