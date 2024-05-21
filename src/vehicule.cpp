@@ -56,25 +56,25 @@ void Vehicule::shift_car(int direction) {
     bool canMove = false;
 
     switch (direction) {
-        case 'g':
+        case 'g': // Left
             if (isHorizontal && selectedColumn > 0 && cells[selectedRow][selectedColumn - 1] == 0) {
                 nextColumn = selectedColumn - 1;
                 canMove = true;
             }
             break;
-        case 'd':
+        case 'd': // Right
             if (isHorizontal && selectedColumn < columns - 2 && cells[selectedRow][selectedColumn + 2] == 0) {
                 nextColumn = selectedColumn + 1;
                 canMove = true;
             }
             break;
-        case 'h':
+        case 'h': // Up
             if (!isHorizontal && selectedRow > 0 && cells[selectedRow - 1][selectedColumn] == 0) {
                 nextRow = selectedRow - 1;
                 canMove = true;
             }
             break;
-        case 'b':
+        case 'b': // Down
             if (!isHorizontal && selectedRow < rows - 2 && cells[selectedRow + 2][selectedColumn] == 0) {
                 nextRow = selectedRow + 1;
                 canMove = true;

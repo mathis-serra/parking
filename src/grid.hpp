@@ -8,8 +8,8 @@ class Grid {
 public:
     Grid(int width, int height, int cellSize);
     void Draw() const;
-    int GetOffsetX() const { return offsetX; }
-    int GetOffsetY() const { return offsetY; }
+    int GetOffsetX() const;
+    int GetOffsetY() const;
 
 private:
     int rows;
@@ -18,8 +18,6 @@ private:
     int offsetX;
     int offsetY;
     std::vector<std::vector<int>> cells;
-
-    void InitializeGrid();
 };
 
-#endif // GRID_HPP
+#endif
